@@ -7,6 +7,6 @@ void	*ft_memset(void *str, int c, size_t n)
 
 	pos = 0;
 	while(pos < n)
-		str[pos++] = (unsigned char)c;
+		((unsigned char*)str)[pos++] = (unsigned char)c;
 	return (str);
 }

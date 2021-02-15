@@ -5,8 +5,8 @@ CFLAGS	= -Wall -Werror -Wextra
 OBJS	= $(SRCS:%.c=%.o)
 
 $(NAME):
-	CC $(CFLAGS) -c $(SRCS) -I./
-	ar -rcs $@ %^
+	$(CC) $(CFLAGS) -c $(SRCS) -I./
+	ar -rcs $@ $^
 
 all: $(NAME)
 
