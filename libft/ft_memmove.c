@@ -1,17 +1,20 @@
+// src : https://clc-wiki.net/wiki/Memmove
+
 #include "libft.h"
 
-void	*ft_memccpy(void *dest, const void *str, size_t len)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	unsigned char		*d;
 	const unsigned char	*s;
 
-	s = str;
-	if (dest != NULL && str != NULL)
+	if (dest < src)
+	{
+		d = dest+n;
+		s = src+n;
 		while (n--)
-		{
-			*d++ = *s;
-			if (*s++ == (unsigned char)c)
-				return (d);
-		}
-	return (NULL);
+			*--d = *--s;
+	}
+	else
+		ft_memcpy(dest, src, n);
+	return (dest);
 }
