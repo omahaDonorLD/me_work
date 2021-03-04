@@ -12,7 +12,7 @@ SRCS	= ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 CFLAGS	= -Wall -Werror -Wextra
 OBJS	= $(SRCS:%.c=%.o)
 
-$(NAME):
+$(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -c $(SRCS) -I./
 	ar -rcs $@ $^
 

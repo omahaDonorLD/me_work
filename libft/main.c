@@ -1,25 +1,64 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/02/28 12:01:40 by jtoty             #+#    #+#             */
+/*   Updated: 2017/03/09 15:39:41 by jtoty            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include <stdlib.h>
+#include <unistd.h>
 #include <string.h>
-#include <stdio.h>
 #include "libft.h"
+#include <stdio.h>
 
-void	test_ft_memccpy()
+static void		ft_print_result(const char *s)
 {
-	char *src = "This is a string";
-	char dest[60];
-	char dest2[60];
-	void *res = ft_memccpy(dest, src, 's', 10);
-	printf("res %s and %s\n", dest, (unsigned char *)res);
-	memccpy(dest2, src, 's', 10);
-	printf("res 2 %s and %s\n", dest2, (unsigned char *)res);
-	return (0);
+	int		len;
+
+	len = 0;
+	while (s[len])
+		len++;
+	write(1, s, len);
 }
 
-int	main(int argc, char *argv[])
+static void		check_memchr(const void *s, int c, size_t n)
 {
-	if (argc == 2)
+	const char *str;
+
+	str = ft_memchr(s, c, n);
+	if (!str)
+		ft_print_result("NULL");
+	else
+		ft_print_result(str);
+}
+
+int				main(int argc, const char *argv[])
+{
+	int			arg;
+
+	alarm(5);
+	if (argc == 1)
+		return (0);
+	else if ((arg = atoi(argv[1])) == 1)
+		check_memchr("bonjour", 'b', 4);
+	else if (arg == 2)
+		check_memchr("bonjour", 'o', 7);
+	else if (arg == 3)
+		check_memchr("bonjourno", 'n', 2);
+	else if (arg == 4)
+		check_memchr("bonjour", 'j', 6);
+	else if (arg == 5)
+		check_memchr("bonjour", 's', 7);
+	else if (arg == 6)
 	{
-	
+		int tab[7] = {-49, 49, 1, -1, 0, -2, 2};
+
+		printf("%s", (char *)ft_memchr(tab, -1, 7));
 	}
 	return (0);
 }
