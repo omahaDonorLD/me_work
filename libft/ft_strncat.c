@@ -1,7 +1,22 @@
 #include "libft.h"
 
-char	*ft_strncat(char *dest, const void *src, size_t size)
+char	*ft_strncat(char *dest, const char *src, size_t size)
 {
-	ft_strncpy(dest + ft_strlen(dest), src, size);
-	return (dest);
+	char	*d;
+
+	d = dest;
+	if (size)
+	{
+		while (*dest)
+			dest++;
+		while ((*dest++ = *src++) != 0)
+		{
+			if (--size == 0)
+			{
+				*dest = '\0';
+				break;
+			}
+		}
+	}
+	return (d);
 }

@@ -5,11 +5,11 @@ char	*ft_strncpy(char *dest, const char *src, size_t n)
 	char		*d;
 
 	d = dest;
-	while (n-- && ((*dest = *src) != '\0'))
+	while (n--)
 	{
-		dest++;
-		src++;
+	       	if ((*d = *src) != '\0')
+			src++;
+		d++;
 	}
-	ft_bzero(dest, n);
-	return (d);
+	return (dest);
 }
